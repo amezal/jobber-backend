@@ -1,0 +1,11 @@
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
+AllCops:
+  Exclude:
+    - "bin/bundle"
+
+Style/OpenStructUse:
+  Exclude:
+    - "app/**/*"
+    - "spec/**/*"

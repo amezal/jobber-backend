@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "/request_access_token", to: "auth#request_oauth2_access_token"
   get "/jobber_account_name", to: "jobber_accounts#jobber_account_name"
   get "/clients", to: "clients#index"
+  get "/jobs", to: "jobs#index"
 
   namespace :webhooks do
     post "/", to: "webhook_receiver#index"

@@ -10,6 +10,7 @@ module Graphql
           limit: JOBS_LIMIT,
           cursor: nil,
           filter: nil,
+          sort: { key: "JOB_NUMBER", direction: "ASCENDING" },
         }
       end
 
@@ -22,8 +23,9 @@ module Graphql
           $limit: Int,
           $cursor: String,
           $filter: JobFilterAttributes,
+          $sort: [JobsSortInput!]
         ) {
-          jobs(first: $limit, after: $cursor, filter: $filter) {
+          jobs(first: $limit, after: $cursor, filter: $filter, sort: $sort) {
             nodes {
               id
               title

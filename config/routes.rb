@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/jobber_account_name", to: "jobber_accounts#jobber_account_name"
   get "/clients", to: "clients#index"
   get "/jobs", to: "jobs#index"
+  get "/jobs/:id", to: "jobs#show"
 
   namespace :webhooks do
     post "/", to: "webhook_receiver#index"

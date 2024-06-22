@@ -27,6 +27,12 @@ module Graphql
             nodes {
               id
               title
+              client {
+                name
+              }
+              startAt
+              endAt
+              jobNumber
             }
             pageInfo {
               ...PageInfoFragment

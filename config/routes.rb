@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/clients", to: "clients#index"
   get "/jobs", to: "jobs#index"
   get "/jobs/:id", to: "jobs#show"
+  patch "/jobs/:id", to: "jobs#update"
 
   namespace :webhooks do
     post "/", to: "webhook_receiver#index"

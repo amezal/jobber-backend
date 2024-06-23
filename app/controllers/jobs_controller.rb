@@ -3,6 +3,7 @@
 class JobsController < ApplicationController
   include Graphql::Queries::Jobs
   include Graphql::Queries::SingleJob
+  include Graphql::Queries::UpdateJob
 
   def index
     token = @jobber_account.jobber_access_token
@@ -19,5 +20,11 @@ class JobsController < ApplicationController
     data = job["data"]["job"].deep_dup
     data["timeSheetEntries"] = data["timeSheetEntries"]["nodes"]
     render(json: { job: data }, status: :ok)
+  end
+
+  def update
+    token = @jobber_account.jobber_access_token
+    JobberService.new.execute_query(token, UpdateJobQuery, update_variables)
+    render(json: {}, status: :ok)
   end
 end

@@ -8,10 +8,10 @@ class JobsController < ApplicationController
   def index
     token = @jobber_account.jobber_access_token
     jobs = JobberService.new.execute_paginated_query(token, JobsQuery, variables, ["jobs"])
-    logger.debug("TEST HEROKU LOGGING")
-    logger.debug("******** Token:")
-    logger.debug(token)
-    logger.debug(jobs)
+    logger.info("TEST HEROKU LOGGING")
+    logger.info("******** Token:")
+    logger.info(token)
+    logger.info(jobs)
 
     render(json: { jobs: jobs }, status: :ok)
   rescue Exceptions::GraphQLQueryError => error

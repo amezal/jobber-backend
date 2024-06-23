@@ -15,6 +15,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    puts("TEST HEROKU LOGGING")
     token = @jobber_account.jobber_access_token
     puts("******** Token:")
     puts(token)

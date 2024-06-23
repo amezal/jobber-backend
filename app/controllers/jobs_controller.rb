@@ -16,6 +16,8 @@ class JobsController < ApplicationController
   def show
     token = @jobber_account.jobber_access_token
     job = JobberService.new.execute_query(token, SingleJobQuery, variables)
-    render(json: job["data"], status: :ok)
+    data = job["data"]["job"].deep_dup
+    data["timeSheetEntries"] = data["timeSheetEntries"]["nodes"]
+    render(json: { job: data }, status: :ok)
   end
 end

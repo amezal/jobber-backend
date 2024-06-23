@@ -19,6 +19,18 @@ module Graphql
             client {
               name
             }
+            timeSheetEntries {
+              nodes {
+                finalDuration
+                startAt
+                endAt
+                user {
+                  name {
+                    full
+                  }
+                }
+              }
+            }
             startAt
             endAt
             jobNumber

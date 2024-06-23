@@ -16,6 +16,7 @@ module Graphql
           job(id: $id) {
             id
             title
+            instructions
             client {
               name
             }

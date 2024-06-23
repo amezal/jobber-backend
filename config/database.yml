@@ -90,6 +90,6 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: jobber_apptemplate_railsapi_production
-  username: jobber_apptemplate_railsapi
-  password: <%= ENV['JOBBER_APPTEMPLATE_RAILSAPI_DATABASE_PASSWORD'] %>
+  # database: jobber_apptemplate_railsapi_production
+  # username: jobber_apptemplate_railsapi
+  # password: <%= ENV['JOBBER_APPTEMPLATE_RAILSAPI_DATABASE_PASSWORD'] %>

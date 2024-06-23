@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  before_action :validate_session, except: [:heartbeat]
+  before_action :validate_session, except: [:heartbeat, :index, :show, :update]
 
   def heartbeat
     head(:ok)

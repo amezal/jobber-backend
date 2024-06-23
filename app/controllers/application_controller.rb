@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  before_action :validate_session, except: [:heartbeat, :index, :show, :update]
+  before_action :validate_session, except: [:heartbeat]
 
   def heartbeat
     head(:ok)
@@ -18,11 +18,11 @@ class ApplicationController < ActionController::API
   end
 
   def valid_access_token?
-    raise Exceptions::AuthorizationException if jobber_account_id.blank?
+    raise Exceptions::JobberAccountIdBlank if jobber_account_id.blank?
 
     set_jobber_account
 
-    raise Exceptions::AuthorizationException if @jobber_account.blank?
+    raise Exceptions::JobberAccountBlank if @jobber_account.blank?
 
     @jobber_account.valid_jobber_access_token?
   end
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::API
 
   def validate_session
     refresh_access_token unless valid_access_token?
-  rescue Exceptions::AuthorizationException => error
+  rescue Exceptions::JobberAccountBlank, Exceptions::JobberAccountIdBlank => error
     render(json: { message: error.message }, status: :unauthorized)
   end
 end
